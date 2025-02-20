@@ -7,6 +7,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import javax.inject.Singleton
 import com.mariana.swordcatchallenge.BuildConfig
+import com.mariana.swordcatchallenge.core.data.remote.service.BreedService
 import dagger.Provides
 
 @Module
@@ -23,15 +24,16 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient
-        .Builder()
-        .addNetworkInterceptor { chain ->
-            val request = chain
-                .request()
-                .newBuilder()
-                .addHeader("x-api-key", BuildConfig.API_KEY)
-                .build()
-            chain.proceed(request)
-        }
-        .build()
+    fun provideAuthInterceptorOkHttpClient(): OkHttpClient {
+        return OkHttpClient
+            .Builder()
+            .addInterceptor(AuthInterceptor())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideCatBreedApiService(retrofit: Retrofit): BreedService {
+        return retrofit.create(BreedService::class.java)
+    }
 }

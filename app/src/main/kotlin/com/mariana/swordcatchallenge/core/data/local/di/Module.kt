@@ -2,7 +2,7 @@ package com.mariana.swordcatchallenge.core.data.local.di
 
 import android.content.Context
 import androidx.room.Room
-import com.mariana.swordcatchallenge.core.data.local.dao.BreedDao
+import com.mariana.swordcatchallenge.core.data.local.dao.CatBreedDao
 import com.mariana.swordcatchallenge.core.data.local.SwordChallengeDataBase
 import com.mariana.swordcatchallenge.core.data.local.SwordChallengeDataBase.Companion.DATABASE_NAME
 import dagger.Provides
@@ -18,7 +18,7 @@ object Module {
     @Provides
     fun provideBreedDao(
         database: SwordChallengeDataBase
-    ): BreedDao = database.getBreedDao()
+    ): CatBreedDao = database.catBreedDao
 
     @Provides
     fun provideDatabase(

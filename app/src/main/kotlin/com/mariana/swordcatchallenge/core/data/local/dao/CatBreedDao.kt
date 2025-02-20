@@ -8,7 +8,7 @@ import com.mariana.swordcatchallenge.core.data.local.model.BreedEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface BreedDao {
+interface CatBreedDao {
 
     @Query("SELECT * FROM breeds")
     fun getBreedsPaging(): PagingSource<Int, BreedEntity>
