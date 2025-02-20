@@ -5,6 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.mariana.swordcatchallenge.core.ui.favorite.FavoriteScreen
+import com.mariana.swordcatchallenge.core.ui.start.StartScreen
 
 
 @Composable
@@ -16,7 +18,10 @@ fun SwordCatChallengeNavi(modifier: Modifier = Modifier) {
         startDestination =   Destinations.Start,
     )            {
         composable<Destinations.Start>{
-            //TODO implement after
+            StartScreen()
+        }
+        composable<Destinations.Favorite> {
+            FavoriteScreen()
         }
     }
 }

@@ -5,4 +5,7 @@ import kotlinx.serialization.Serializable
 sealed interface Destinations {
     @Serializable
     data object Start: Destinations
+
+    @Serializable
+    data object Favorite: Destinations
 }
