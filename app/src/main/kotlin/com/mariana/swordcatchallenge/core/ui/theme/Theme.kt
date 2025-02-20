@@ -1,4 +1,4 @@
-package com.mariana.swordcatchallenge.ui.theme
+package com.mariana.swordcatchallenge.core.ui.theme
 
 import android.app.Activity
 import android.os.Build
