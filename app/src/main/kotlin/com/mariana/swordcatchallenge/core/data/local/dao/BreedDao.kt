@@ -1,10 +1,10 @@
-package com.mariana.swordcatchallenge.core.data.dao
+package com.mariana.swordcatchallenge.core.data.local.dao
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
-import com.mariana.swordcatchallenge.core.data.model.BreedEntity
+import com.mariana.swordcatchallenge.core.data.local.model.BreedEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,4 +1,4 @@
-package com.mariana.swordcatchallenge.core.data.model
+package com.mariana.swordcatchallenge.core.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

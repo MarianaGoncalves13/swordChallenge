@@ -1,4 +1,4 @@
-package com.mariana.swordcatchallenge.core.data.repository
+package com.mariana.swordcatchallenge.core.model.repository
 
 data class Breed(
     val id: String,
