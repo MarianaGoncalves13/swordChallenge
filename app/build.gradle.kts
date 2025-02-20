@@ -69,6 +69,13 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.androidx.compose)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.compose.paging)
+
+
+    //Local
+    implementation(libs.bundles.room)
+    ksp(libs.room.compiler)
+
 
     //Network
     implementation(libs.retrofit)

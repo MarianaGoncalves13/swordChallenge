@@ -1,0 +1,21 @@
+package com.mariana.swordcatchallenge.core.data.model
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.ColumnInfo
+
+@Entity(tableName = "breeds")
+data class BreedEntity(
+    @PrimaryKey
+    val id: String,
+    val name: String,
+    val origin: String,
+    val temperament: String,
+    val description: String,
+    @ColumnInfo("image_url")
+    val imageUrl: String,
+    @ColumnInfo("favorite_id")
+    val favoriteId: Long?,
+    @ColumnInfo("life_span")
+    val lifeSpan: String,
+)
