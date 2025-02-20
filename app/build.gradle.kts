@@ -58,6 +58,7 @@ android {
 dependencies {
 
     //Core
+    implementation(libs.ksp.plugin)
     implementation(libs.androidx.core.ktx)
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
@@ -71,15 +72,17 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.paging)
 
-
     //Local
     implementation(libs.bundles.room)
     ksp(libs.room.compiler)
 
-
     //Network
     implementation(libs.retrofit)
+    implementation(libs.retrofit.kotlinx.serialization.converter)
     implementation(libs.ok.http)
+
+    //Paging
+    implementation(libs.androidx.paging.runtime)
 
     //Testing
     testImplementation(libs.junit)
