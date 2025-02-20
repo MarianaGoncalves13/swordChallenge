@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,6 +7,13 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlinx.serialization)
+}
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+
+if(localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
 }
 
 android {
@@ -19,6 +28,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"api.thecatapi.com\"")
+        buildConfigField("String", "API_KEY", "${localProperties["API_KEY"]}")
     }
 
     buildTypes {
@@ -39,20 +51,30 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
 dependencies {
 
+    //Core
     implementation(libs.androidx.core.ktx)
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
+    implementation(libs.kotlinx.serialization.json)
+
+    //UI
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.androidx.compose)
     implementation(libs.androidx.material3)
-    implementation(libs.hilt)
-    ksp(libs.hilt.compiler)
-    implementation(libs.kotlinx.serialization.json)
+
+    //Network
+    implementation(libs.retrofit)
+    implementation(libs.ok.http)
+
+    //Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

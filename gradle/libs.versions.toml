@@ -14,6 +14,9 @@ hilt = "2.51.1"
 hiltNavigation = "1.2.0"
 ksp = "2.0.0-1.0.24"
 uiToolingPreviewAndroid = "1.7.8"
+retrofit = "2.11.0"
+okHttp = "4.12.0"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,6 +44,9 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.r
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigation" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 androidx-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "uiToolingPreviewAndroid" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+ok-http = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp" }
+
 
 [bundles]
 androidx-compose = [
