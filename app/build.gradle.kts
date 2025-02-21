@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.bundles.androidx.compose)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.paging)
+    implementation(libs.coil)
 
     //Local
     implementation(libs.bundles.room)
