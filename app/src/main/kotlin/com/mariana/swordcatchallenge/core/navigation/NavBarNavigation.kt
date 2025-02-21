@@ -54,15 +54,3 @@ fun NavBarNavigation(
         }
     }
 }
-
-@Preview
-@Composable
-private fun NavBarNavigationPreview() {
-    SwordCatChallengeTheme {
-        NavBarNavigation(
-            modifier = Modifier,
-            onBottomItemClick = {},
-            currentDestination = null,
-        )
-    }
-}
