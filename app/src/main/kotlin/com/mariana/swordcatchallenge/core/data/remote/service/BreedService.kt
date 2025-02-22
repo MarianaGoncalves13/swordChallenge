@@ -1,18 +1,20 @@
 package com.mariana.swordcatchallenge.core.data.remote.service
 
-import com.mariana.swordcatchallenge.core.data.remote.model.CatBreedResponse
+import com.mariana.swordcatchallenge.core.data.model.CatBreed
+import com.mariana.swordcatchallenge.core.data.remote.CatApiConstants.BREEDS_SEARCH_URL
+import com.mariana.swordcatchallenge.core.data.remote.CatApiConstants.BREEDS_URL
+import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface BreedService {
 
-    @GET("/breeds")
+    @GET(BREEDS_URL)
     suspend fun getBreeds(
         @Query("limit") limit: Int,
         @Query("page") page: Int,
-    ): List<CatBreedResponse>
+    ): Response<List<CatBreed>>
 
-    @GET("/breeds/{id}")
-    suspend fun getBreed(@Path("id") id: Int): CatBreedResponse
+    @GET(BREEDS_SEARCH_URL)
+    suspend fun getDogBreedsByBreed(@Query("q") searchQuery: String): Response<List<CatBreed>>
 }

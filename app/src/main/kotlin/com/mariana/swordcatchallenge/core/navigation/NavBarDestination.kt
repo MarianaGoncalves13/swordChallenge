@@ -2,8 +2,8 @@ package com.mariana.swordcatchallenge.core.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.mariana.swordcatchallenge.R
 
@@ -21,6 +21,6 @@ enum class NavBarDestination(
     Favorite(
         labelRes = R.string.favorite_point,
         destination = Destinations.Favorite,
-        iconVector = Icons.Filled.Favorite,
+        iconVector = Icons.Outlined.Favorite,
     ),
 }

@@ -1,13 +1,16 @@
 package com.mariana.swordcatchallenge.core.ui.start
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.mariana.swordcatchallenge.core.features.StartViewModel
+import androidx.compose.runtime.getValue
+import com.mariana.swordcatchallenge.core.ui.viewmodel.StartViewModel
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.mariana.swordcatchallenge.R
@@ -22,38 +25,42 @@ fun StartScreen(
     viewModel: StartViewModel = hiltViewModel(),
 ) {
 
-}
+    @Composable
+    fun StartContent(
+        modifier: Modifier = Modifier,
+        onEvent: (StartUiEvent) -> Unit,
+        isLoading: Boolean,
+        pagingData: Flow<PagingData<CatBreedUi>>,
+        search: String,
+    ) {
+        val pagingData = pagingData.collectAsLazyPagingItems()
 
-@Composable
-fun StartContent(
-    modifier: Modifier = Modifier,
-    onEvent: (StartUiEvent) -> Unit,
-    isLoading: Boolean,
-    pagingData: Flow<PagingData<CatBreedUi>>,
-) {
-    val pagingData = pagingData.collectAsLazyPagingItems()
+        Header(
+            header = {
+                Text(
+                    stringResource(R.string.start_point),
+                    style = MaterialTheme.typography.headlineSmall
+                )
+            },
+            text = {
+                when {
+                    !isLoading -> {
+                        CatList(
+                            modifier = modifier,
+                            onCatBreedClick = { onEvent(StartUiEvent.OnCatBreedClick(it)) },
+                            onFavoriteChanged = { catBreed, isFavorite ->
+                                onEvent(StartUiEvent.OnFavoriteBreed(catBreed, isFavorite))
+                            },
+                            paging = pagingData
+                        )
+                    }
 
-    Header(
-        header = {
-            Text(
-                stringResource(R.string.start_point),
-                style = MaterialTheme.typography.headlineSmall
-            )
-        },
-        text = {
-            when {
-                !isLoading -> {
-                    CatList(
-                        modifier = modifier,
-                        onCatBreedClick = { onEvent(StartUiEvent.OnCatBreedClick(it)) },
-                        onFavoriteChanged = { catBreed, isFavorite ->
-                            onEvent(StartUiEvent.OnFavoriteBreed(catBreed, isFavorite))
-                        },
-                        paging = pagingData
-                    )
+                    else -> Loading(modifier = Modifier.fillMaxSize())
                 }
-                else -> Loading(modifier = Modifier.fillMaxSize())
             }
+        )
+        BackHandler(enabled = search.isNotEmpty()) {
+            onEvent(StartUiEvent.OnSearchBreed(""))
         }
-    )
+    }
 }

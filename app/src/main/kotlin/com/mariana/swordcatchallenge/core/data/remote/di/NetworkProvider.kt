@@ -12,8 +12,9 @@ import dagger.Provides
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+object NetworkProvider {
 
+    @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit
         .Builder()

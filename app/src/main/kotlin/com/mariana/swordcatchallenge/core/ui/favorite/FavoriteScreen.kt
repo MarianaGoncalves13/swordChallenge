@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.mariana.swordcatchallenge.core.features.FavoriteViewModel
+import com.mariana.swordcatchallenge.core.ui.viewmodel.FavoriteViewModel
 import com.mariana.swordcatchallenge.core.ui.theme.SwordCatChallengeTheme
 
 @Composable

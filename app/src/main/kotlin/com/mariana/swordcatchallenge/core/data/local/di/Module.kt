@@ -3,8 +3,8 @@ package com.mariana.swordcatchallenge.core.data.local.di
 import android.content.Context
 import androidx.room.Room
 import com.mariana.swordcatchallenge.core.data.local.dao.CatBreedDao
-import com.mariana.swordcatchallenge.core.data.local.SwordChallengeDataBase
-import com.mariana.swordcatchallenge.core.data.local.SwordChallengeDataBase.Companion.DATABASE_NAME
+import com.mariana.swordcatchallenge.core.data.local.AppDataBase
+import com.mariana.swordcatchallenge.core.data.local.AppDataBase.Companion.DATABASE_NAME
 import dagger.Provides
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,15 +17,15 @@ object Module {
 
     @Provides
     fun provideBreedDao(
-        database: SwordChallengeDataBase
+        database: AppDataBase
     ): CatBreedDao = database.catBreedDao
 
     @Provides
     fun provideDatabase(
         @ApplicationContext context: Context
-    ): SwordChallengeDataBase = Room.databaseBuilder(
+    ): AppDataBase = Room.databaseBuilder(
         context,
-        SwordChallengeDataBase::class.java,
+        AppDataBase::class.java,
         DATABASE_NAME
     ).build()
 }

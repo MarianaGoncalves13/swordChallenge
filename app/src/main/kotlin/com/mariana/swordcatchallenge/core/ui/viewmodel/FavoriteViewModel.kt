@@ -1,4 +1,4 @@
-package com.mariana.swordcatchallenge.core.features
+package com.mariana.swordcatchallenge.core.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
