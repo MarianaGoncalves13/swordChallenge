@@ -16,5 +16,5 @@ interface BreedService {
     ): Response<List<CatBreed>>
 
     @GET(BREEDS_SEARCH_URL)
-    suspend fun getDogBreedsByBreed(@Query("q") searchQuery: String): Response<List<CatBreed>>
+    suspend fun getSearchBreed(@Query("q") searchQuery: String): Response<List<CatBreed>>
 }

@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.ksp.plugin)
     implementation(libs.androidx.core.ktx)
     implementation(libs.hilt)
+    implementation(libs.androidx.runtime.livedata)
     ksp(libs.hilt.compiler)
     implementation(libs.kotlinx.serialization.json)
 

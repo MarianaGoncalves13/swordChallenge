@@ -27,6 +27,19 @@ class CatBreedRepository @Inject constructor (
         }
         return emptyList()
     }
+
+    suspend fun getSearchBreed(searchQuery: String): List<CatBreed> {
+        try {
+            val response = breedService.getSearchBreed(searchQuery)
+            if (response.isSuccessful) {
+                response.body()?.let {
+                    return it
+                }
+            }
+        }
+        catch (error: Error) {
+            error.printStackTrace()
+        }
+        return emptyList()
+    }
 }
-
-

@@ -1,70 +1,45 @@
 package com.mariana.swordcatchallenge.core.ui.components
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.material3.Card
 import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.mariana.swordcatchallenge.core.data.model.CatBreed
+import com.mariana.swordcatchallenge.core.ui.theme.Black
 
 @Composable
-fun Card(
-    modifier: Modifier = Modifier,
-    breed: String,
-    image: String?,
-    onClick: () -> Unit,
-    isFavorite: Boolean,
-    favoriteChanged: (Boolean) -> Unit = {}
-) {
+fun CatBreedGridItem(catBreed: CatBreed, navController: NavController) {
     Card(
-        modifier = modifier,
-        shape = RoundedCornerShape(12.dp),
-        onClick = onClick,
+        shape = RoundedCornerShape(3.dp),
+        border = BorderStroke(0.5.dp, Black),
+        modifier = Modifier
+            .padding(4.dp)
+            .height(180.dp),
     ) {
-        CatCardRow(
-           modifier = Modifier,
-            breed = breed,
-            isFavorite = isFavorite,
-            favoriteChanged = favoriteChanged
-
+        Column(modifier = Modifier.clickable(
+            onClick = {
+                navController.navigate("breed_details/${catBreed.id}")
+            }
         )
-        //TODO Implement image after
-    }
-}
-
-@Composable
-fun CatCardRow(
-    modifier: Modifier = Modifier,
-    breed: String,
-    isFavorite: Boolean,
-    favoriteChanged: (Boolean) -> Unit
-) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Center,
-    ) {
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
         ) {
-            CatFavoriteButton(
-                isFavorite = isFavorite,
-                favoriteChanged = favoriteChanged,
-            )
-            Text(
-                modifier = Modifier
-                    .padding(14.dp)
-                    .weight(1F),
-                text = breed,
-                fontSize = 12.sp,
-                maxLines = 1
-            )
+            catBreed.name.let {
+                //TODO implement image after
+                Text(
+                    text = it,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(start = 8.dp)
+                )
+            }
         }
     }
 }
